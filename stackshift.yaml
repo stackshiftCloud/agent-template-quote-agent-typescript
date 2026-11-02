@@ -1,0 +1,35 @@
+apiVersion: stackshift.com/v1
+kind: Application
+metadata:
+  name: quote-agent
+spec:
+  services:
+    agent:
+      type: agent
+      startCommand: node dist/agent.js
+      port: 8080
+      agent:
+        name: Quote agent
+        level: safe_changes
+        wakeOn: [agreements]
+        sleepAfter: 15m
+        payWith: credits
+        budget:
+          computePerDay: { NGN: "500000" }
+        inbox:
+          sendMode: replies
+        agreements: true
+        platform:
+          - agreements.propose
+          - agreements.inspect
+        actions:
+          - key: hand_to_owner
+            summary: Leave a quote request for the owner to answer
+            risk: tell_me
+            input:
+              type: object
+              required: [thread_id, reason]
+              properties:
+                thread_id: { type: string, maxLength: 100 }
+                reason: { type: string, maxLength: 500 }
+            output: trusted
