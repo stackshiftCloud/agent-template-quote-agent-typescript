@@ -32,7 +32,7 @@ Item names are matched without regard to capital letters. `deliveryDays` is how 
 From the dashboard, open Agents and choose New agent. Or from your terminal:
 
 ```bash
-stackshift agents create --name "Quote agent" --template quote-agent --language typescript
+stackshift agents create --name "Quote agent" --template quote-agent --language typescript --platform agreements.propose --platform agreements.inspect
 ```
 
 Then open the agent's inbox settings and set its agreement limits. With no limits set, every quote waits for you.

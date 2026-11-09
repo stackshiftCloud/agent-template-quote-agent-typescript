@@ -11,7 +11,7 @@
     "node": ">=20"
   },
   "dependencies": {
-    "@stackshift-cloud/agent": "^0.1.0"
+    "@stackshift-cloud/agent": "^0.1.1"
   },
   "devDependencies": {
     "@types/node": "^20.19.0",
